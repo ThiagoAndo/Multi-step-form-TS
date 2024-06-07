@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext} from "react";
 
 import Instruction from "../holdTop/Instructions";
 import AuthContext from "../../context/auth-context";

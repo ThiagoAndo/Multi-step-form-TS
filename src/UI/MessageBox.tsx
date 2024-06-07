@@ -1,8 +1,14 @@
 import "./MessageBox.css";
+type MProps = {
+  msg: { msg: string; call: string ; inf: string };
+  close: () => void;
+  onClick: () => void;
+  click: number|null;
+};
 
-export default function MessageBox({ txt, close, call, onClick, click }) {
-  let txtMsg = "Alert!";
-  let myClass = "warning";
+export default function MessageBox({ msg, close, onClick, click }: MProps) {
+  const txtMsg = "Alert!";
+  const myClass = "warning";
   let btnTxt = "Ok";
 
   if (call === "Info") {
@@ -29,7 +35,7 @@ export default function MessageBox({ txt, close, call, onClick, click }) {
         onClick();
         break;
       default:
-        navigator.clipboard.writeText(txt.inf);
+        navigator.clipboard.writeText(msg.inf);
         close();
     }
   }
@@ -50,14 +56,16 @@ export default function MessageBox({ txt, close, call, onClick, click }) {
           <div className={`fa-warning ${myClass}`}></div>
         </div>
         <div className={"hold-txt"}>
-          <strong>{txtMsg}</strong><br/><br/>
-          {txt.msg}
-          {call === "validation" ? (
+          <strong>{txtMsg}</strong>
+          <br />
+          <br />
+          {msg.msg}
+          {msg.call === "validation" ? (
             <div className={"copy"}>
               <input
                 type="text"
                 className={"inp"}
-                value={txt.inf}
+                value={msg.inf}
                 id="myInput"
               />
               <button className={"btnMsg"} onClick={myFunction}>

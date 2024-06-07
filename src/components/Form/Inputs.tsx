@@ -1,25 +1,25 @@
 import { useState, useRef, useEffect } from "react";
 import { formCheck } from "./formValidation";
 import style from "./Form.module.css";
-
-import CartModal from "../../UI/Modal";
+import { Inf } from "../botton/FormControl";
+import CartModal, { ModalHandle } from "../../UI/Modal";
 
 const Inputs = (props) => {
   const [autoComplete, setAutoComplete] = useState(true);
   const [isEmpty, setIsEmpty] = useState(false);
-  const [msg, setMsg] = useState({});
-  const inputRef = useRef();
-  const modal = useRef();
+  const [msg, setMsg] = useState<Inf>({
+    msg: "",
+    call: "validation",
+    inf: "",
+  });
+  const inputRef = useRef<HTMLInputElement>(null);
+  const modal = useRef<ModalHandle>(null);
+
   const item = localStorage.getItem(props.id);
 
-  useEffect(() => {
-    inputRef.current.value = item;
-    props.onComplete(props.id, item);
-  }, []);
-
   const checkInputValue = (call) => {
-    const inputName = inputRef.current.id;
-    const val = inputRef.current.value.trim();
+    const inputName = inputRef.current!.id;
+    const val = inputRef.current!.value.trim();
     const retu = formCheck[inputName](val);
     if (retu === true) {
       props.onComplete(inputName, val);
@@ -27,21 +27,21 @@ const Inputs = (props) => {
     } else if (call != "autoFill") {
       setMsg(retu);
       setIsEmpty(true);
-      modal.current.open();
+      modal.current!.open();
       return;
     }
 
     setAutoComplete(false);
     setTimeout(() => {
-      inputRef.current.value = "";
-      inputRef.current.blur();
+      inputRef.current!.value = "";
+      inputRef.current!.blur();
       setIsEmpty(true);
     }, 500);
   };
 
   const handleInput = (call) => {
     if (item) return;
-    const val = inputRef.current.value.trim();
+    const val = inputRef.current!.value.trim();
     switch (call) {
       case "blur":
         if (val === "") {
@@ -51,8 +51,8 @@ const Inputs = (props) => {
         }
         break;
       case "focus":
-        if (inputRef.current.value === "⚠️") {
-          inputRef.current.value = "";
+        if (inputRef.current!.value === "⚠️") {
+          inputRef.current!.value = "";
         }
         setIsEmpty(false);
         break;
@@ -64,10 +64,16 @@ const Inputs = (props) => {
       checkInputValue("autoFill");
     }
   };
+  useEffect(() => {
+    if (item !== null) {
+      inputRef.current!.value = item;
+    }
+    props.onComplete(props.id, item);
+  }, []);
 
   return (
     <>
-      <CartModal ref={modal} txt={msg} call={"validation"}></CartModal>
+      <CartModal ref={modal} msg={msg} onClick={()=>{}} click={null} ></CartModal>
       <label
         htmlFor={props.label}
         style={isEmpty === true ? { color: "#f70b0b98" } : undefined}

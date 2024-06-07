@@ -1,6 +1,8 @@
-import React, { useState, useReducer, useEffect } from "react";
+import { useState, useReducer, useEffect, createContext } from "react";
 
-const AuthContext = React.createContext({
+type item = { type: number; price: number };
+
+const AuthContext = createContext({
   formConf: false,
   choosePlan: {},
   setPlan: (type, price) => {},
@@ -77,7 +79,7 @@ export const ContextProvider = (props) => {
     SetIsBtn(false);
   }, [leng]);
 
-  const setPlan = (type, price) => {
+  const setPlan = (type: string, price: number): void => {
     planDispatch({
       type: "record",
       payload: { type, price },

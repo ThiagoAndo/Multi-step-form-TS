@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useState} from "react";
 
 import Container from "./UI/Container";
 import Header from "./components/header/Header";
@@ -11,10 +11,11 @@ import Adds from "./components/adds/Adds";
 import Totals from "./components/total/Totals";
 import ThankYou from "./components/thankYou/ThankYou";
 function App() {
-  let [click, setClick] = useState(0);
+  const [click, setClick] = useState(0);
 
-  const handleClick = (direction) => {
-    console.log(direction);
+  
+
+  const handleClick = (direction:string)=> {
     if (direction === "forward") {
       setClick((prev) => (prev = prev + 1));
     } else if (direction === "backward") {
@@ -33,7 +34,7 @@ function App() {
       <Header>
         {textObj.map((txts, index) => (
           <StepNumTreck
-            class={click === index ? "backColor" : ""}
+            thisClass={click === index ? "backColor" : ""}
             txt={txts.txt}
             txt2={txts.txt2}
           >

@@ -3,47 +3,58 @@ import AuthContext from "../../context/auth-context";
 
 import "./FormControl.css";
 import Modal from "../../UI/Modal";
+type FcProps = {
+  onClick: (direction: string) => void;
+  click: number;
+};
 
-const FormControl = ({ onClick, click }) => {
-  const [msg, setMsg] = useState(["", ""]);
+export type Inf = {
+  msg: string;
+  call: string;
+  inf: string;
+};
+const FormControl = ({ onClick, click }: FcProps) => {
+  const [msg, setMsg] = useState<Inf>({
+    msg: "",
+    call: "",
+    inf: "",
+  });
   const context = useContext(AuthContext);
-  const modal = useRef();
+  const modal = useRef<ModalHandle>(null);
+
   const handleClick = (e) => {
     switch (e.target.innerHTML[0]) {
       case "N":
         if (click >= 0) {
           if (click === 0 && !context.formConf) {
-            setMsg([
-              {
-                msg: "Make sure to fill in the form. The filds must be correct",
-              },
-              { call: "alert" },
-            ]);
+            setMsg({
+              msg: "Make sure to fill in the form. The filds must be correct",
+              call: "alert",
+              inf: "",
+            });
             modal.current.open();
           } else if (click === 0 && context.formConf === true) {
             onClick("forward");
           } else if (click === 1 && context.choosePlan.type) {
             onClick("forward");
           } else if (click === 1 && !context.choosePlan.type) {
-            setMsg([
-              {
-                msg: "In order to carry on with your purcahse you should pick a plan",
-              },
-              { call: "alert" },
-            ]);
+            setMsg({
+              msg: "In order to carry on with your purcahse you should pick a plan",
+              call: "alert",
+              inf: "",
+            });
 
             modal.current.open();
           } else if (click === 1 && context.choosePlan) {
             onClick("forward");
           } else if (click === 2 && context.chooseAdd.length === 0) {
-            setMsg([
-              {
-                msg: "Are you sure you will not enhance your experience with this great offer?",
-              },
-              { call: "info" },
-            ]);
+            setMsg({
+              msg: "Are you sure you will not enhance your experience with this great offer?",
+              call: "info",
+              inf: "",
+            });
             modal.current.open();
-            onClick(undefined);
+            onClick("");
           } else if (click === 2 && context.chooseAdd.length > 0) {
             onClick("forward");
             context.setTotal();
@@ -74,8 +85,7 @@ const FormControl = ({ onClick, click }) => {
     <div className={"botton"}>
       <Modal
         ref={modal}
-        txt={msg[0]}
-        call={msg[1]}
+        msg={msg}
         onClick={handleModalAdd}
         click={click}
       ></Modal>
