@@ -11,7 +11,7 @@ export default function MessageBox({ msg, close, onClick, click }: MProps) {
   const myClass = "warning";
   let btnTxt = "Ok";
 
-  if (call === "Info") {
+  if (msg.call === "Info") {
     btnTxt = "Yes";
   }
 

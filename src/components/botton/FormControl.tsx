@@ -1,8 +1,8 @@
 import { useState, useRef, useContext } from "react";
+import { type } from "react";
 import AuthContext from "../../context/auth-context";
-
+import CartModal, { ModalHandle } from "../../UI/Modal";
 import "./FormControl.css";
-import Modal from "../../UI/Modal";
 type FcProps = {
   onClick: (direction: string) => void;
   click: number;
@@ -32,7 +32,7 @@ const FormControl = ({ onClick, click }: FcProps) => {
               call: "alert",
               inf: "",
             });
-            modal.current.open();
+            modal.current!.open();
           } else if (click === 0 && context.formConf === true) {
             onClick("forward");
           } else if (click === 1 && context.choosePlan.type) {
@@ -44,7 +44,7 @@ const FormControl = ({ onClick, click }: FcProps) => {
               inf: "",
             });
 
-            modal.current.open();
+            modal.current!.open();
           } else if (click === 1 && context.choosePlan) {
             onClick("forward");
           } else if (click === 2 && context.chooseAdd.length === 0) {
@@ -53,7 +53,7 @@ const FormControl = ({ onClick, click }: FcProps) => {
               call: "info",
               inf: "",
             });
-            modal.current.open();
+            modal.current!.open();
             onClick("");
           } else if (click === 2 && context.chooseAdd.length > 0) {
             onClick("forward");
@@ -83,12 +83,12 @@ const FormControl = ({ onClick, click }: FcProps) => {
   }
   return (
     <div className={"botton"}>
-      <Modal
+      <CartModal
         ref={modal}
         msg={msg}
         onClick={handleModalAdd}
         click={click}
-      ></Modal>
+      ></CartModal>
       <button
         className={click >= 1 ? "btn" : "btn intlCol"}
         onClick={handleClick}

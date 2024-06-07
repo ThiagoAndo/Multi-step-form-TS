@@ -17,7 +17,7 @@ const Inputs = (props) => {
 
   const item = localStorage.getItem(props.id);
 
-  const checkInputValue = (call) => {
+  const checkInputValue = (call:string) => {
     const inputName = inputRef.current!.id;
     const val = inputRef.current!.value.trim();
     const retu = formCheck[inputName](val);
@@ -39,7 +39,7 @@ const Inputs = (props) => {
     }, 500);
   };
 
-  const handleInput = (call) => {
+  const handleInput = (call: string) => {
     if (item) return;
     const val = inputRef.current!.value.trim();
     switch (call) {

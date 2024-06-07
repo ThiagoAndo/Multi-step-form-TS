@@ -1,6 +1,6 @@
 export const formCheck = {
-  name: (name) => {
-    var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+  name: (name:string) => {
+    const regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
     if (!regName.test(name)) {
       return {
         msg: "Make sure to fill in Your Name and Last Name. You can copy and paste the text below",
@@ -10,7 +10,7 @@ export const formCheck = {
       return true;
     }
   },
-  email: (email) => {
+  email: (email:string) => {
     const pass = email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
     if (pass) {
       return true;
@@ -22,7 +22,7 @@ export const formCheck = {
     }
   },
 
-  phone: (number) => {
+  phone: (number:string) => {
     const valueExp = new RegExp(
       "^\\+[3]{1}[5]{1}[3]{1}-[0-9]{2}-[0-9]{3}-[0-9]{4}$"
     );
