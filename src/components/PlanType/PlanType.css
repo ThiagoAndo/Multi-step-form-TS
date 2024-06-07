@@ -1,0 +1,344 @@
+#planCont {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 10px;
+  box-shadow: 0px 3px 21px -17px;
+  transition: height 0.3s ease;
+}
+
+.grid_month {
+  grid-area: 2/ 2/ 4/ 3;
+  height: 438px;
+}
+
+.grid_year {
+  grid-area: 2/ 2/ 4/ 3;
+  height: 490px;
+}
+
+.planType {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 5px;
+  width: 272px;
+  margin: auto;
+  margin-top: 10px;
+  border: solid 2px hsl(229, 24%, 87%);
+  border-radius: 7px;
+  padding: 10px 0px 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.stop_effect {
+  transition: 90000s;
+}
+
+.planType:hover {
+  background-color: hsl(206, 94%, 87%);
+  border: solid 2px hsl(243, 100%, 62%);
+}
+
+.active {
+  background-color: hsl(206, 94%, 87%);
+  border: solid 2px hsl(243, 100%, 62%);
+}
+
+.planType div:first-of-type {
+  width: 50px;
+  margin-left: 15px;
+}
+
+.info div:first-of-type img {
+  width: 70%;
+}
+
+.planType .txt {
+  line-height: 20px;
+}
+
+.planType .txt p:first-of-type {
+  font-weight: 600;
+}
+
+.planType .txt p:nth-child(2) {
+  color: hsl(231, 11%, 63%);
+  font-size: 0.8rem;
+}
+
+.yerlyVisible {
+  font-size: 0.7rem;
+  color: hsl(213, 96%, 18%);
+  line-height: 20px;
+  height: 0px;
+  opacity: 0;
+  visibility: hidden;
+  transition: height 0.4s, opacity 0.4s ease;
+}
+
+.visible {
+  height: 20px;
+  visibility: visible;
+  opacity: 1;
+}
+
+/****************** End of Plans Cont *****************/
+/*====================================================*/
+/****************** Pick adds-on *********************/
+.planType>div:first-of-type>input {
+  margin-top: 9px;
+  margin-left: 3px;
+  width: 23px;
+  height: 21px;
+}
+
+.planType>div:last-of-type>.prc {
+  line-height: 40px;
+  font-size: 0.8rem;
+  color: hsl(243, 100%, 62%);
+  margin: auto;
+  text-align: center;
+}
+
+.planType {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
+.addOn>.planType>.cheBox {
+  width: 30px;
+}
+
+.addOn>.planType>.cheBox input {
+  cursor: pointer;
+}
+
+.addOn>.planType .txt {
+  line-height: 20px;
+}
+
+.addOn>.planType .txt p:first-of-type {
+  font-size: 0.8rem;
+}
+
+.addOn>.planType .txt p:last-of-type {
+  color: hsl(231, 11%, 63%);
+  font-size: 0.65rem;
+}
+
+/****************** Finishing Up **********************/
+
+#fUp {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 10px;
+  box-shadow: 0px 3px 21px -17px;
+  grid-area: 2/ 2/ 4/ 3;
+}
+
+#fUp>.planType {
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 10px;
+  grid-template-columns: 3fr 1fr;
+  cursor: default;
+}
+
+#fUp>.planType>.txt {
+  width: auto;
+}
+
+#change {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: hsl(231, 11%, 63%);
+}
+
+#fUp>.planType>.txt .fTxt {
+  font-size: 0.85rem;
+  font-weight: 400;
+}
+
+#arcade {
+  font-size: 0.9rem;
+}
+
+#fUp>.planType>.txt>.lht {
+  font-size: 0.9rem;
+}
+
+#fUp>.lh>div:last-of-type .prc {
+  line-height: 20px;
+}
+
+#finalOne,
+#finalTwo {
+  font-weight: 600;
+}
+
+#fUp>div:last-of-type>#finalTwo {
+  font-size: 1.3rem;
+  line-height: 20px;
+}
+
+#finalOne {
+  color: black;
+}
+
+#fUp>.planType {
+  background-color: hsl(217, 100%, 97%);
+}
+
+#fUp>#totalP {
+  background-color: hsl(0, 0%, 100%);
+  border: hsl(0, 0%, 100%);
+}
+
+#fUp>.planType {
+  margin-top: 0px;
+  border: hsl(0, 0%, 100%);
+  border-radius: 0px;
+}
+
+#fUp>div:nth-child(2) {
+  border-radius: 7px 7px 0 0;
+  border-bottom: solid 1px hsl(229, 24%, 87%);
+}
+
+#fUp>div:nth-child(5) {
+  border-radius: 0 0 7px 7px;
+}
+
+/****************** End Finishing Up ********************/
+/****************** Thank you Page ********************/
+#finishd {
+  border-radius: 10px;
+  background-color: hsl(0, 0%, 100%)
+}
+
+#finishd>img {
+  display: block;
+  width: 80px;
+  margin: auto;
+  padding-top: 70px;
+}
+
+#finishd h1 {
+  text-align: center;
+}
+
+.holdLabel {
+  width: 272px;
+  margin: auto;
+  padding-top: 25px;
+}
+
+#finishd .holdLabel>p {
+  line-height: 1.5em;
+  padding: 5px 0px 18px;
+  color: hsl(231, 11%, 63%);
+  font-size: 0.9rem;
+  margin-top: 15px;
+  text-align: center;
+}
+
+/****************** End Thank you Page **************/
+
+/*===================================================*/
+
+@media (min-width: 440px) and (max-width: 2000px) {
+  #planCont {
+    grid-area: 1/ 2/ 2/ 3;
+    box-shadow: 0px 0px 0px 0px;
+    margin-left: 40px;
+  }
+
+  #planCont {
+    box-shadow: 0px 0px 0px 0px;
+  }
+
+  #planDesk {
+    width: 450px;
+    height: 250px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #planDesk .planType {
+    width: 125px;
+    height: 175px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    margin: 0;
+  }
+
+  #planDesk .pDesk {
+    width: 75px;
+  }
+
+  #planDesk .planType div:first-of-type {
+    margin-left: 0px;
+  }
+
+  #planDesk .planType div {
+    margin-right: 25px;
+  }
+
+  .planType:hover {
+    transform: translateY(-0.2rem);
+  }
+
+  .active {
+    transform: translateY(-0.2rem);
+  }
+
+  .addOn>.planType {
+    width: 400px;
+    margin-top: 10px;
+    margin-left: 0px;
+  }
+
+  #fUp {
+    grid-area: 1/ 2/ 2/ 3;
+    box-shadow: 0px 0px 0px 0px;
+    margin-left: 40px;
+  }
+
+  .addOn>.planType .txt p:first-of-type {
+    font-size: 1rem;
+  }
+
+  .addOn>.planType .txt p:last-of-type {
+    font-size: 0.8rem;
+  }
+
+  .planType>div:last-of-type>.prc {
+    font-size: 1rem;
+  }
+
+  #finishd {
+    grid-area: 1/ 2/ 2/ 3;
+    width: 500px;
+    margin: auto;
+  }
+
+  #finishd>.holdLabel {
+    width: 500px;
+  }
+
+  #finishd img {
+    margin-top: 100px;
+    margin-right: 238px;
+  }
+
+  #finishd>.holdLabel>.h1 {
+    padding-right: 70px;
+  }
+
+  #finishd>.holdLabel>p {
+    margin-top: 20px;
+    padding-right: 56px;
+  }
+}

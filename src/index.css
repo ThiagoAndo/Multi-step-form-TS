@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+body {
+  background-color: #bfe2fd88;
+  font-size: 16px;
+}
+h1 {
+  color: hsl(213, 96%, 18%);
+}
+
+#root {
+  overflow-y: hidden;
+}
+@media (min-width: 440px) and (max-width: 1600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}

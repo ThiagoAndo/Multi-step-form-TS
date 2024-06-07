@@ -1,0 +1,64 @@
+.numContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 80px;
+  margin-top: 10px;
+}
+.pNum {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 1px hsl(231, 100%, 99%);
+  color: hsl(231, 100%, 99%);
+  border-radius: 20px;
+}
+.onliDesk {
+  display: none;
+}
+
+/* Dom manipulation========== */
+.backColor {
+  background-color: hsl(206, 94%, 87%);
+  color: black;
+}
+
+/* ========================= */
+
+@media (min-width: 440px) and (max-width: 2000px) {
+  .numContainer {
+    margin-top: 25px;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 45px;
+  }
+  .onliDesk {
+    display: block;
+    margin-left: 10px;
+  }
+
+  .pNum {
+    font-size: 1.1rem;
+    width: 40px;
+    height: 40px;
+    margin-top: 0;
+  }
+  .row {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+  }
+  .onliDesk p:first-of-type {
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    font-weight: 100;
+    color: hsla(0, 0%, 100%, 0.459);
+  }
+  .onliDesk p:last-of-type {
+    font-weight: 500;
+    color: hsl(0, 0%, 100%);
+    text-transform: uppercase;
+  }
+}

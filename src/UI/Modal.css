@@ -1,0 +1,43 @@
+#modal {
+  width: 102%;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  animation: fade-slide-in-from-top 0.3s ease-in-out;
+  margin: auto;
+}
+
+#modal::backdrop {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+@keyframes fade-slide-in-from-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-slide-in-from-right {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 440px) and (max-width: 2000px) {
+#modal {
+  width: 40%;
+  
+}
+
+
+}

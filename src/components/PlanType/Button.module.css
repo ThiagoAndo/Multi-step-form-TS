@@ -1,0 +1,55 @@
+ #holdBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  width: 272px;
+  margin: auto;
+  margin-top: 15px;
+  height: 50px;
+  background-color: hsl(217, 100%, 97%);
+  border-radius: 7px;
+}
+ #holdBtn > #btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 40px;
+  height: 20px;
+  border-radius: 15px;
+  background-color: hsl(213, 96%, 18%);
+  cursor: pointer;
+}
+ #holdBtn > #btn > div {
+  width: 12px;
+  height: 12px;
+  border-radius: 50px;
+  background-color: hsl(0, 0%, 100%);
+  transition: margin-left 0.3s ease;
+}
+.month {
+  margin-left: 5px;
+}
+.year {
+  margin-left: 25px;
+}
+.textColor {
+  font-weight: 600;
+  color: hsl(213, 96%, 18%);
+}
+.color {
+  color: hsl(231, 11%, 63%);
+}
+@media (min-width: 440px) and (max-width: 2000px) {
+
+ #holdBtn {
+    width: 450px;
+    margin-right: 50px;
+  }
+
+
+}
+
+
+

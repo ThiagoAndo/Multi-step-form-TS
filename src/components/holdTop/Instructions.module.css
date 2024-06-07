@@ -1,0 +1,23 @@
+.holdLabel {
+  width: 272px;
+  margin: auto;
+  padding-top: 25px;
+}
+.par {
+  line-height: 1.5em;
+  padding: 5px 0px 18px;
+  color: hsl(231, 11%, 63%);
+}
+
+@media (min-width: 440px) and (max-width: 2000px) {
+  .holdLabel {
+    width: 500px;
+  }
+  .holdLabel p {
+    margin-top: 15px;
+  }
+
+  .par {
+    font-size: 1rem;
+  }
+}
