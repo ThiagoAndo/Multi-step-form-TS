@@ -41,7 +41,6 @@ const year = [
   },
   "year",
 ];
-
 const Plantype = () => {
   const context = useContext(AuthContext);
   localStorage.setItem("lenght", context.planLenght);
@@ -91,10 +90,8 @@ const Plantype = () => {
       className={length[3] === "year" ? "grid_year" : "grid_month"}
     >
       <Instruction
-        info={{
-          select: "Select your plan",
-          option: "You have the option of monthly or yearly billing.",
-        }}
+        select={"Select your plan"}
+        option={"You have the option of monthly or yearly billing."}
       />
 
       <div id={"planDesk"}>
@@ -107,7 +104,7 @@ const Plantype = () => {
           }}
           svg={arcade}
           click={0}
-          class={`${clickUp == 0 ? myClass : "planType"}`}
+          ThisClass={`${clickUp == 0 ? myClass : "planType"}`}
           onClick={handleClick}
         />
         <Plan
@@ -120,7 +117,7 @@ const Plantype = () => {
           svg={advanced}
           length={length[3]}
           click={1}
-          class={`${clickUp == 1 ? myClass : "planType"}`}
+          ThisClass={`${clickUp == 1 ? myClass : "planType"}`}
           onClick={handleClick}
         />
         <Plan
@@ -132,7 +129,7 @@ const Plantype = () => {
           }}
           svg={pro}
           click={2}
-          class={`${clickUp == 2 ? myClass : "planType"}`}
+          ThisClass={`${clickUp == 2 ? myClass : "planType"}`}
           onClick={handleClick}
         />
       </div>

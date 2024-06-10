@@ -1,23 +1,29 @@
 import "./PlanType.css";
 
-const Plan = (props) => {
+// SVGElement props
+type PlnaProps = {
+  svg: string;
+  click: number;
+  ThisClass: string;
+  onClick: (a: number, b: string) => void;
+  info: { type: string; price: string; length: string };
+};
 
+const Plan = ({ svg, click, ThisClass, onClick, info }: PlnaProps) => {
   const handleClick = () => {
-    props.onClick(props.click, props.info.type);
+    onClick(click, info.type);
   };
   return (
-    <div className={props.class} onClick={() => handleClick(props.click)}>
+    <div className={ThisClass} onClick={handleClick}>
       <div>
-        <img src={props.svg}></img>
+        <img src={svg}></img>
       </div>
       <div className={"txt"}>
-        <p className={"pDesk"}>{props.info.type}</p>
-        <p className={"pDesk"}>{props.info.price}</p>
+        <p className={"pDesk"}>{info.type}</p>
+        <p className={"pDesk"}>{info.price}</p>
         <p
           className={
-            props.info.length === "year"
-              ? "yerlyVisible visible"
-              : "yerlyVisible"
+            info.length === "year" ? "yerlyVisible visible" : "yerlyVisible"
           }
         >
           2 months free

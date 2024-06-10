@@ -1,11 +1,16 @@
 import style from "./Instructions.module.css";
 
-
-const Instruction = (props) => {
+const Instruction = ({
+  select,
+  option,
+}: {
+  select: string;
+  option: string;
+}) => {
   return (
     <div className={style.holdLabel}>
-      <h1>{props.info.select}</h1>
-      <p className={style.par}>{props.info.option}</p>
+      <h1>{select}</h1>
+      <p className={style.par}>{option}</p>
     </div>
   );
 };

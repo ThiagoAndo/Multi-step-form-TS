@@ -13,7 +13,7 @@ const Form = () => {
   });
   const context = useContext(AuthContext);
 
-  function handleChange(inputIdentifier:string, val:string) {
+  function handleChange(inputIdentifier: string, val: string) {
     setUserInput((prevUserInput) => {
       return {
         ...prevUserInput,
@@ -31,15 +31,13 @@ const Form = () => {
   }
 
   return (
-    <section className={style["formCont"]}>
+    <section className={style.formCont}>
       <Instruction
-        info={{
-          select: "Personal info",
-          option: " Please provide your name, email address, and phone number.",
-        }}
+        select={"Personal info"}
+        option={"Please provide your name, email address, and phone number."}
       />
 
-      <form action="" id={style["resform"]}>
+      <form action="" id={style.resform}>
         {iptCont.map((cont) => (
           <Inputs
             key={cont.id}
