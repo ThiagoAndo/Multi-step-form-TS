@@ -10,8 +10,8 @@ type FcProps = {
 
 export type Inf = {
   msg: string;
-  call: string;
-  inf: string;
+  inf?: string;
+  call?: string;
 };
 const FormControl = ({ onClick, click }: FcProps) => {
   const [msg, setMsg] = useState<Inf>({
@@ -30,7 +30,6 @@ const FormControl = ({ onClick, click }: FcProps) => {
             setMsg({
               msg: "Make sure to fill in the form. The filds must be correct",
               call: "alert",
-              inf: "",
             });
             modal.current!.open();
           } else if (click === 0 && context.formConf === true) {
@@ -41,7 +40,6 @@ const FormControl = ({ onClick, click }: FcProps) => {
             setMsg({
               msg: "In order to carry on with your purcahse you should pick a plan",
               call: "alert",
-              inf: "",
             });
 
             modal.current!.open();
@@ -51,7 +49,6 @@ const FormControl = ({ onClick, click }: FcProps) => {
             setMsg({
               msg: "Are you sure you will not enhance your experience with this great offer?",
               call: "info",
-              inf: "",
             });
             modal.current!.open();
             onClick("");

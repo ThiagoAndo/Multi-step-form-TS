@@ -1,5 +1,13 @@
-export const formCheck = {
-  name: (name:string) => {
+import { Inf } from "../botton/FormControl";
+
+type Check = {
+  [name: string]: (a: string) => boolean | Inf;
+  email: (a: string) => boolean | Inf;
+  phone: (a: string) => boolean | Inf;
+};
+
+export const formCheck: Check = {
+  name: (name: string) => {
     const regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
     if (!regName.test(name)) {
       return {
@@ -10,7 +18,7 @@ export const formCheck = {
       return true;
     }
   },
-  email: (email:string) => {
+  email: (email: string) => {
     const pass = email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
     if (pass) {
       return true;
@@ -22,7 +30,7 @@ export const formCheck = {
     }
   },
 
-  phone: (number:string) => {
+  phone: (number: string) => {
     const valueExp = new RegExp(
       "^\\+[3]{1}[5]{1}[3]{1}-[0-9]{2}-[0-9]{3}-[0-9]{4}$"
     );

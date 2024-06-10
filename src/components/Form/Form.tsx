@@ -13,7 +13,7 @@ const Form = () => {
   });
   const context = useContext(AuthContext);
 
-  function handleChange(inputIdentifier, val) {
+  function handleChange(inputIdentifier:string, val:string) {
     setUserInput((prevUserInput) => {
       return {
         ...prevUserInput,
@@ -44,11 +44,11 @@ const Form = () => {
           <Inputs
             key={cont.id}
             label={cont.label}
+            id={cont.id}
+            onComplete={handleChange}
             type={cont.type}
             name={cont.name}
-            id={cont.id}
             placeholder={cont.placeholder}
-            onComplete={handleChange}
           />
         ))}
       </form>

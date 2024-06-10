@@ -1,10 +1,21 @@
-import { useState, useRef, useEffect } from "react";
+import {
+  useState,
+  useRef,
+  useEffect,
+  type ComponentPropsWithoutRef,
+} from "react";
 import { formCheck } from "./formValidation";
 import style from "./Form.module.css";
 import { Inf } from "../botton/FormControl";
 import CartModal, { ModalHandle } from "../../UI/Modal";
 
-const Inputs = (props) => {
+type InpProps = {
+  label: string;
+  id: string;
+  onComplete: (a: string, b: string) => void;
+} & ComponentPropsWithoutRef<"input">;
+
+const Inputs = ({ label, id, onComplete, ...props }: InpProps) => {
   const [autoComplete, setAutoComplete] = useState(true);
   const [isEmpty, setIsEmpty] = useState(false);
   const [msg, setMsg] = useState<Inf>({
@@ -15,17 +26,17 @@ const Inputs = (props) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const modal = useRef<ModalHandle>(null);
 
-  const item = localStorage.getItem(props.id);
+  const item = localStorage.getItem(id);
 
-  const checkInputValue = (call:string) => {
+  const checkInputValue = (call: string) => {
     const inputName = inputRef.current!.id;
     const val = inputRef.current!.value.trim();
     const retu = formCheck[inputName](val);
     if (retu === true) {
-      props.onComplete(inputName, val);
+      onComplete(inputName, val);
       return;
     } else if (call != "autoFill") {
-      setMsg(retu);
+      setMsg(retu as Inf);
       setIsEmpty(true);
       modal.current!.open();
       return;
@@ -68,17 +79,22 @@ const Inputs = (props) => {
     if (item !== null) {
       inputRef.current!.value = item;
     }
-    props.onComplete(props.id, item);
+    onComplete(id, item ?? "");
   }, []);
 
   return (
     <>
-      <CartModal ref={modal} msg={msg} onClick={()=>{}} click={null} ></CartModal>
+      <CartModal
+        ref={modal}
+        msg={msg}
+        onClick={() => {}}
+        click={null}
+      ></CartModal>
       <label
-        htmlFor={props.label}
+        htmlFor={label}
         style={isEmpty === true ? { color: "#f70b0b98" } : undefined}
       >
-        {props.label}
+        {label}
       </label>
       <input
         ref={inputRef}

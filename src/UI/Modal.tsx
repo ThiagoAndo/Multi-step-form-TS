@@ -1,10 +1,12 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
+import { Inf } from "../components/botton/FormControl";
+
 export type ModalHandle = {
   open: () => void;
 };
 
 type ModalProps = {
-  msg: { msg: string; call: string; inf: string };
+  msg: Inf;
   onClick: () => void;
   click: number | null;
 };

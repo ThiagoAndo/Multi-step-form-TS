@@ -1,15 +1,17 @@
 import "./MessageBox.css";
+import { Inf } from "../components/botton/FormControl";
 type MProps = {
-  msg: { msg: string; call: string ; inf: string };
+  msg: Inf;
   close: () => void;
   onClick: () => void;
-  click: number|null;
+  click: number | null;
 };
 
 export default function MessageBox({ msg, close, onClick, click }: MProps) {
   const txtMsg = "Alert!";
   const myClass = "warning";
   let btnTxt = "Ok";
+  const message = msg.inf ?? || ""
 
   if (msg.call === "Info") {
     btnTxt = "Yes";
@@ -35,7 +37,7 @@ export default function MessageBox({ msg, close, onClick, click }: MProps) {
         onClick();
         break;
       default:
-        navigator.clipboard.writeText(msg.inf);
+        navigator.clipboard.writeText(message);
         close();
     }
   }
