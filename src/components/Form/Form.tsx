@@ -27,7 +27,7 @@ const Form = () => {
     localStorage.setItem("name", name);
     localStorage.setItem("email", email);
     localStorage.setItem("phone", phone);
-    context.formConf = true;
+    context!.formConf = true;
   }
 
   return (

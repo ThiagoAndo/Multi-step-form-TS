@@ -1,53 +1,16 @@
 import { useState, useContext, useEffect } from "react";
-
-import "./PlanType.css";
+import { month, year } from "./planCont";
 import arcade from "../assets/images/icon-arcade.svg";
 import advanced from "../assets/images/icon-advanced.svg";
 import pro from "../assets/images/icon-pro.svg";
-
 import AuthContext from "../../context/auth-context";
 import Plan from "./Plan";
 import Instruction from "../holdTop/Instructions";
 import Button from "./Button";
-type Plans = {
-  txt: string;
-  price: number;
-  length?: string;
-};
-const month: Plans[] = [
-  {
-    txt: "$9/mo",
-    price: 9,
-    length: "month",
-  },
-  {
-    txt: "$12/mo",
-    price: 12,
-  },
-  {
-    txt: "$15/mo",
-    price: 15,
-  },
-];
-
-const year = [
-  {
-    txt: "$90/yr",
-    price: 90,
-    length: "year",
-  },
-  {
-    txt: "$120/yr",
-    price: 120,
-  },
-  {
-    txt: "$150/yr",
-    price: 150,
-  },
-];
+import "./PlanType.css";
 const Plantype = () => {
   const context = useContext(AuthContext);
-  localStorage.setItem("lenght", context.planLenght);
+  localStorage.setItem("lenght", context!.planLenght);
   const planLocal = localStorage.getItem("plan");
   const planLocalPrice = localStorage.getItem("planPrice");
   let choose;
@@ -70,20 +33,20 @@ const Plantype = () => {
   const len = length[0]["length"] as string;
 
   useEffect(() => {
-    if (context.planLenght === "month") {
+    if (context!.planLenght === "month") {
       setLength(month);
     } else {
       setLength(year);
     }
 
-    if (planLocal && planLocalPrice && context.choosePlan.type === "") {
-      context.setPlan(planLocal, Number(planLocalPrice));
+    if (planLocal && planLocalPrice && context!.choosePlan.item.type === "") {
+      context!.setPlan(planLocal, Number(planLocalPrice));
     }
   }, [context.planLenght]);
 
-  const handleClick = (clickNum:number, type:string) => {
+  const handleClick = (clickNum: number, type: string) => {
     setClickup(clickNum);
-    context.setPlan(type, length[clickNum].price);
+    context!.setPlan(type, length[clickNum].price);
     localStorage.setItem("plan", type);
     localStorage.setItem("planPrice", length[clickNum].price + "");
   };
@@ -97,7 +60,6 @@ const Plantype = () => {
         select={"Select your plan"}
         option={"You have the option of monthly or yearly billing."}
       />
-
       <div id={"planDesk"}>
         <Plan
           key={"Arcade"}

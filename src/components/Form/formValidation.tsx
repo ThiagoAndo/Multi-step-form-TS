@@ -1,7 +1,7 @@
 import { Inf } from "../botton/FormControl";
 
 type Check = {
-  [name: string]: (a: string) => boolean | Inf;
+  name: (a: string) => boolean | Inf;
   email: (a: string) => boolean | Inf;
   phone: (a: string) => boolean | Inf;
 };

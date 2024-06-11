@@ -1,5 +1,4 @@
 import { useState, useRef, useContext } from "react";
-import { type } from "react";
 import AuthContext from "../../context/auth-context";
 import CartModal, { ModalHandle } from "../../UI/Modal";
 import "./FormControl.css";
@@ -22,39 +21,39 @@ const FormControl = ({ onClick, click }: FcProps) => {
   const context = useContext(AuthContext);
   const modal = useRef<ModalHandle>(null);
 
-  const handleClick = (e) => {
-    switch (e.target.innerHTML[0]) {
+  const handleClick = (call: string) => {
+    switch (call) {
       case "N":
         if (click >= 0) {
-          if (click === 0 && !context.formConf) {
+          if (click === 0 && !context!.formConf) {
             setMsg({
               msg: "Make sure to fill in the form. The filds must be correct",
               call: "alert",
             });
             modal.current!.open();
-          } else if (click === 0 && context.formConf === true) {
+          } else if (click === 0 && context!.formConf === true) {
             onClick("forward");
-          } else if (click === 1 && context.choosePlan.type) {
+          } else if (click === 1 && context!.choosePlan.item.type) {
             onClick("forward");
-          } else if (click === 1 && !context.choosePlan.type) {
+          } else if (click === 1 && !context!.choosePlan.item.type) {
             setMsg({
               msg: "In order to carry on with your purcahse you should pick a plan",
               call: "alert",
             });
 
             modal.current!.open();
-          } else if (click === 1 && context.choosePlan) {
+          } else if (click === 1 && context!.choosePlan) {
             onClick("forward");
-          } else if (click === 2 && context.chooseAdd.length === 0) {
+          } else if (click === 2 && context!.chooseAdd.length === 0) {
             setMsg({
               msg: "Are you sure you will not enhance your experience with this great offer?",
               call: "info",
             });
             modal.current!.open();
             onClick("");
-          } else if (click === 2 && context.chooseAdd.length > 0) {
+          } else if (click === 2 && context!.chooseAdd.length > 0) {
             onClick("forward");
-            context.setTotal();
+            context!.setTotal();
           }
         }
         break;
@@ -76,7 +75,7 @@ const FormControl = ({ onClick, click }: FcProps) => {
   };
 
   if (click === 3) {
-    context.setTotal();
+    context!.setTotal();
   }
   return (
     <div className={"botton"}>
@@ -88,14 +87,14 @@ const FormControl = ({ onClick, click }: FcProps) => {
       ></CartModal>
       <button
         className={click >= 1 ? "btn" : "btn intlCol"}
-        onClick={handleClick}
+        onClick={() => handleClick("G")}
       >
         Go Back
       </button>
       <button
         className={"btn"}
         type="submit"
-        onClick={handleClick}
+        onClick={() => handleClick(click === 3 ? "C" : "N")}
         style={click === 3 ? { backgroundColor: "#473dff" } : undefined}
       >
         {click === 3 ? "Confirm" : "Next Step"}

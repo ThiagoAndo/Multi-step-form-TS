@@ -16,7 +16,6 @@ const StepNumTreck = ({ txt, txt2 ,thisClass, children}:NumTreck) => {
         <p>{txt}</p>
         <p>{txt2}</p>
       </div>
-      a
     </div>
   );
 };

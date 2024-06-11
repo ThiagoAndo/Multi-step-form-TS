@@ -1,17 +1,23 @@
-import { useContext} from "react";
+import { useContext } from "react";
 
 import Instruction from "../holdTop/Instructions";
 import AuthContext from "../../context/auth-context";
 import AddPrice from "./AddPrice";
-const Totals = ({ onChangePlan }) => {
+type onChange = {
+  onChangePlan: (a: string) => void;
+};
+const Totals = ({ onChangePlan }: onChange) => {
   const context = useContext(AuthContext);
-  let adds = context.chooseAdd;
-  let plan = context.choosePlan;
-  const res = context.planLenght;
-  const total = context.finalAmount;
+  const adds = context!.chooseAdd;
+  const plan = context!.choosePlan;
+  const res = context!.planLenght;
+  const total = context!.finalAmount;
 
-  let addLength = {};
-  if (context.planLenght === "month") {
+  const addLength = {
+    type: "",
+    add: "",
+  };
+  if (context!.planLenght === "month") {
     addLength.type = "Monthly";
     addLength.add = "mo";
   } else {
@@ -22,14 +28,12 @@ const Totals = ({ onChangePlan }) => {
   return (
     <section className={" formCont addOn"} id={"fUp"}>
       <Instruction
-        info={{
-          select: "Finishin Up",
-          option: "Double-check everything looks OK before confirming",
-        }}
+        select={"Finishin Up"}
+        option={"Double-check everything looks OK before confirming"}
       />
       <div className={"planType stop_effect"}>
         <div className={"txt"}>
-          <p>{`${plan.type + "(" + addLength.type + ")"}`}</p>
+          <p>{`${plan.item.type + "(" + addLength.type + ")"}`}</p>
           <p>
             <a
               href="#"
@@ -44,7 +48,7 @@ const Totals = ({ onChangePlan }) => {
         </div>
         <div>
           <p className={"prc prc3"} id={"finalOne"}>
-            {`${plan.price + "/" + addLength.add}`}
+            {`${plan.item.price + "/" + addLength.add}`}
           </p>
         </div>
       </div>

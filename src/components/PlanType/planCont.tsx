@@ -1,4 +1,11 @@
-const content = [
+
+type Plans = {
+  txt: string;
+  price: number;
+  length?: string;
+};
+
+export const content = [
   {
     MonthTxt: "$9/mo",
     YearTxt: "$90/yr",
@@ -18,5 +25,35 @@ const content = [
     Year: 150,
   },
 ];
+export const month: Plans[] = [
+  {
+    txt: "$9/mo",
+    price: 9,
+    length: "month",
+  },
+  {
+    txt: "$12/mo",
+    price: 12,
+  },
+  {
+    txt: "$15/mo",
+    price: 15,
+  },
+];
 
+export const year: Plans[] = [
+  {
+    txt: "$90/yr",
+    price: 90,
+    length: "year",
+  },
+  {
+    txt: "$120/yr",
+    price: 120,
+  },
+  {
+    txt: "$150/yr",
+    price: 150,
+  },
+];
 export default content;

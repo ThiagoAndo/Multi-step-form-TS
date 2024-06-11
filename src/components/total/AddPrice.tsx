@@ -1,6 +1,5 @@
 
-const AddPrice = ({ add, price,addLength}) => {
-  
+const AddPrice = ({ add, price, addLength }: {add:string ,price:number, addLength:string}) => {
   return (
     <div className={"planType stop_effect  lh"}>
       <div className={"txt"}>

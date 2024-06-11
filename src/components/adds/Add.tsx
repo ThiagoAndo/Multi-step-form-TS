@@ -3,33 +3,46 @@ import { useState, useRef, useContext, useEffect } from "react";
 import AuthContext from "../../context/auth-context";
 import "../PlanType/PlanType.css";
 
-export default function Add({ service, advantage, price, addActive, id }) {
+type AddProps = {
+  service: string;
+  advantage: string;
+  price: { txt: string; num: number };
+  addActive: string;
+  id: string;
+};
+export default function Add({
+  service,
+  advantage,
+  price,
+  addActive,
+  id,
+}: AddProps) {
   const [active, setActive] = useState(addActive);
-  const myRef = useRef();
+  const myRef = useRef<HTMLInputElement>(null);
   const context = useContext(AuthContext);
   const localAdd = localStorage.getItem(id);
-  const addLength = context.chooseAdd.length;
+  const addLength = context!.chooseAdd.length;
 
   useEffect(() => {
     if (addActive) {
-      myRef.current.checked = true;
+      myRef.current!.checked = true;
     }
-    if (localAdd  && addLength === 0) {
+    if (localAdd && addLength === 0) {
       handleClick();
     }
   }, []);
 
   const handleClick = () => {
     if (active === "active") {
-      setActive(undefined);
-      myRef.current.checked = false;
-      context.setAdd(service, id);
+      setActive("");
+      myRef.current!.checked = false;
+      context!.setAdd(service, id, 0, "");
       localStorage.removeItem(id);
     } else if (addLength <= 3) {
-      context.setAdd(service, id, price.num, "add");
-      myRef.current.checked = true;
+      context!.setAdd(service, id, price.num, "add");
+      myRef.current!.checked = true;
       setActive("active");
-      localStorage.setItem(id, id);
+      localStorage.setItem("id", id);
     }
   };
 

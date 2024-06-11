@@ -3,7 +3,7 @@ import "../PlanType/PlanType.css";
 
 const ThankYou = () => {
   return (
-    <section id={"finishd"} class={"grid_month addOn"}>
+    <section id={"finishd"} className={"grid_month addOn"}>
       <img src={img} />
       <div className={"holdLabel"}>
       <h1 className={"h1"}>Thank you!</h1>

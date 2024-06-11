@@ -1,6 +1,5 @@
 import "./PlanType.css";
 
-// SVGElement props
 type PlnaProps = {
   svg: string;
   click: number;

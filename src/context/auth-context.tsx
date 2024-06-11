@@ -1,33 +1,52 @@
-import { useState, useReducer, useEffect, createContext } from "react";
+import {
+  type ReactNode,
+  useState,
+  useReducer,
+  useEffect,
+  createContext,
+} from "react";
 
-type item = { type: number; price: number };
+type Items = { item: { type: string; price: number } };
+type Pay = { type: string; price: number };
+type add = { service: string; price: number };
+type TimersContextProviderProps = {
+  children: ReactNode;
+};
 
-const AuthContext = createContext({
-  formConf: false,
-  choosePlan: {},
-  setPlan: (type, price) => {},
-  planLenght: "",
-  setLenght: () => {},
-  chooseAdd: [],
-  addId: [],
-  setAdd: (type, price) => {},
-  setTotal: () => {},
-  finalAmount: 0,
-});
+const item: Items = { item: { type: "", price: 0 } };
+type Context = {
+  formConf: boolean;
+  choosePlan: Items;
+  setPlan: (a: string, b: number) => void;
+  setLenght: () => void;
+  planLenght: string;
+  chooseAdd: add[];
+  addId: string[];
+  setAdd: (a: string, b: string, c: number, d: string) => void;
+  setTotal: () => void;
+  finalAmount: number;
+};
 
-let addId = [];
+const AuthContext = createContext<Context | null>(null);
 
-function actionReducer(state, action) {
-  if (action.type === "record") {
-    state.item.type = action.payload.type;
-    state.item.price = action.payload.price;
+let addId:string[] = [];
+
+type ReducerActions = {
+  type: "RECORD" | "UPDATE_MONTH" | "UPDATE_YEAR";
+  payload?: Pay;
+};
+
+function actionReducer(state: Items, action: ReducerActions) {
+  if (action.type === "RECORD") {
+    state.item.type = action.payload!.type;
+    state.item.price = action.payload!.price;
   }
-  if (state.item.price < 15 && action.type.up === "update year") {
+  if (state.item.price < 15 && action.type === "UPDATE_YEAR") {
     state.item.price = state.item.price * 10;
-    localStorage.setItem("planPrice", state.item.price);
-  } else if (state.item.price > 15 && action.type.up === "update month") {
+    localStorage.setItem("planPrice", state.item.price + "");
+  } else if (state.item.price > 15 && action.type === "UPDATE_MONTH") {
     state.item.price = state.item.price / 10;
-    localStorage.setItem("planPrice", state.item.price);
+    localStorage.setItem("planPrice", state.item.price + "");
   }
 
   return {
@@ -35,23 +54,18 @@ function actionReducer(state, action) {
   };
 }
 
-export const ContextProvider = (props) => {
+export const ContextProvider = ({ children }: TimersContextProviderProps) => {
   const lenghtLocal = localStorage.getItem("lenght");
-  const [plan, planDispatch] = useReducer(actionReducer, {
-    item: {
-      type: "",
-      price: 0,
-    },
-  });
+  const [plan, planDispatch] = useReducer(actionReducer, item);
 
   const [total, SetTotal] = useState(0);
   const [isBtn, SetIsBtn] = useState(false);
-  const [add, SetAdd] = useState([]);
+  const [add, SetAdd] = useState<add[]>([]);
   const [leng, SetLeng] = useState(
     lenghtLocal === null ? "month" : lenghtLocal
   );
 
-  const updateAdd = (val) => {
+  const updateAdd = (val:number) => {
     const updated = add.map((add) => {
       return { ["service"]: add.service, ["price"]: add.price * val };
     });
@@ -63,13 +77,13 @@ export const ContextProvider = (props) => {
       switch (leng) {
         case "year":
           planDispatch({
-            type: { up: "update year" },
+            type: "UPDATE_YEAR",
           });
           updateAdd(10);
           break;
         case "month":
           planDispatch({
-            type: { up: "update month" },
+            type: "UPDATE_MONTH",
           });
           updateAdd(0.1);
 
@@ -81,7 +95,7 @@ export const ContextProvider = (props) => {
 
   const setPlan = (type: string, price: number): void => {
     planDispatch({
-      type: "record",
+      type: "RECORD",
       payload: { type, price },
     });
   };
@@ -91,7 +105,12 @@ export const ContextProvider = (props) => {
     SetIsBtn(true);
   };
 
-  const setChoseAdd = (service, id, price, call) => {
+  const setChoseAdd = (
+    service: string,
+    id: string,
+    price: number,
+    call: string
+  ) => {
     if (call === "add") {
       SetAdd((prev) => [...prev, { service, price }]);
       addId.push(id);
@@ -117,7 +136,7 @@ export const ContextProvider = (props) => {
     <AuthContext.Provider
       value={{
         setPlan: setPlan,
-        choosePlan: plan.item,
+        choosePlan: plan,
         setLenght: setLenght,
         planLenght: leng,
         setAdd: setChoseAdd,
@@ -128,7 +147,7 @@ export const ContextProvider = (props) => {
         formConf: false,
       }}
     >
-      {props.children}
+      {children}
     </AuthContext.Provider>
   );
 };

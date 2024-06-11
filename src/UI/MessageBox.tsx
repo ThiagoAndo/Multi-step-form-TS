@@ -11,7 +11,7 @@ export default function MessageBox({ msg, close, onClick, click }: MProps) {
   const txtMsg = "Alert!";
   const myClass = "warning";
   let btnTxt = "Ok";
-  const message = msg.inf ?? || ""
+  const message = msg.inf || "";
 
   if (msg.call === "Info") {
     btnTxt = "Yes";

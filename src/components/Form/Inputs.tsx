@@ -4,7 +4,7 @@ import {
   useEffect,
   type ComponentPropsWithoutRef,
 } from "react";
-import { formCheck } from "./formValidation";
+import { Check, formCheck } from "./formValidation";
 import style from "./Form.module.css";
 import { Inf } from "../botton/FormControl";
 import CartModal, { ModalHandle } from "../../UI/Modal";
@@ -29,14 +29,24 @@ const Inputs = ({ label, id, onComplete, ...props }: InpProps) => {
   const item = localStorage.getItem(id);
 
   const checkInputValue = (call: string) => {
-    const inputName = inputRef.current!.id;
+    const inpID = inputRef.current!.id;
+    type Name ="name" |"email" | "phone"
     const val = inputRef.current!.value.trim();
-    const retu = formCheck[inputName](val);
-    if (retu === true) {
-      onComplete(inputName, val);
+    let funcName :Name ="name";
+    switch (val) {
+      case "name":
+        funcName = "name";
+        break;
+        }
+        
+        const func = formCheck[funcName];
+
+    const ret = func(val);
+    if (ret === true) {
+      onComplete(funcName, val);
       return;
     } else if (call != "autoFill") {
-      setMsg(retu as Inf);
+      setMsg(ret as Inf);
       setIsEmpty(true);
       modal.current!.open();
       return;
