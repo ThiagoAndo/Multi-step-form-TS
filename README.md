@@ -1,10 +1,13 @@
 # Frontend Mentor - Multi-step form solution
 
 <div style="text-align: justify">
-This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). This React App is built using [React](https://react.dev/) and [TypeScrpt](https://www.typescriptlang.org/docs/handbook/intro.html). <spam style="font-weight: bold"> React</spam> (also known as React.js or ReactJS) is an open-source frontend JavaScript library that is used for building UIs, especially for single-page and mobile apps which is based on composable components
-and it only re-renders specific parts of the application wherever the screen updates are required. It is used to handle the view layer of
+
+This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). This React App is buid using [React](https://react.dev/) and [TypeScrpt](https://www.typescriptlang.org/docs/handbook/intro.html). <spam style="font-weight: bold"> React</spam> (also known as React.js or ReactJS) is an open source frontend JavaScript library that is used for building UIs, especially for single- page and mobile apps which is based on composable components
+and it only re-renders specific parts of the application wherever the screen updates are required . It is used for handling the view layer of
 web and mobile apps.<spam style="font-weight: bold"> Typescript</spam> open-source programming language. It's a Javascript superset (typescript extends javascript) with the addition of static typing. serves as a superset of JavaScript, offering optional static type-checking along with the latest ECMAScript features. By incorporating types into your JavaScript code, TypeScript allows you to catch errors more effectively and write more maintainable and robust code, perfect for large-scale projects.
-This project has three different variations. It was initially build using [JS Modules](https://github.com/ThiagoAndo/multi-step-form-main), [ReactJS](https://github.com/ThiagoAndo/React-mult-step-form) and this one;
+</br>
+This project has three different variations. It was initialy build usising [JS Modules](https://github.com/ThiagoAndo/multi-step-form-main), [ReactJS](https://github.com/ThiagoAndo/React-mult-step-form) and this one;
+
 </div>
 
 ## Built with
