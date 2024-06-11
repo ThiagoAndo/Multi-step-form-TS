@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-
 import style from "./Form.module.css";
 import AuthContext from "../../context/auth-context";
 import Inputs from "./Inputs";
@@ -12,7 +11,6 @@ const Form = () => {
     phone: "",
   });
   const context = useContext(AuthContext);
-
   function handleChange(inputIdentifier: string, val: string) {
     setUserInput((prevUserInput) => {
       return {
@@ -22,14 +20,12 @@ const Form = () => {
     });
   }
   const { name, email, phone } = userInput;
-
   if (name && email && phone) {
     localStorage.setItem("name", name);
     localStorage.setItem("email", email);
     localStorage.setItem("phone", phone);
     context!.formConf = true;
   }
-
   return (
     <section className={style.formCont}>
       <Instruction
@@ -53,5 +49,4 @@ const Form = () => {
     </section>
   );
 };
-
 export default Form;

@@ -1,11 +1,9 @@
-import { Inf } from "../botton/FormControl";
-
-type Check = {
+import { Inf } from "../footer/FormControl";
+export type Check = {
   name: (a: string) => boolean | Inf;
   email: (a: string) => boolean | Inf;
   phone: (a: string) => boolean | Inf;
 };
-
 export const formCheck: Check = {
   name: (name: string) => {
     const regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
@@ -13,6 +11,7 @@ export const formCheck: Check = {
       return {
         msg: "Make sure to fill in Your Name and Last Name. You can copy and paste the text below",
         inf: "Stephen King",
+        call: "validation",
       };
     } else {
       return true;
@@ -26,10 +25,10 @@ export const formCheck: Check = {
       return {
         msg: "Make sure to enter a valid email. You can copy and paste the text below",
         inf: "stephenking@lorem.com",
+        call: "validation",
       };
     }
   },
-
   phone: (number: string) => {
     const valueExp = new RegExp(
       "^\\+[3]{1}[5]{1}[3]{1}-[0-9]{2}-[0-9]{3}-[0-9]{4}$"
@@ -40,6 +39,7 @@ export const formCheck: Check = {
       return {
         msg: "Make sure to enter a valid Phone Number. You can copy and paste the text below",
         inf: "+353-83-567-8901",
+        call: "validation",
       };
     }
   },

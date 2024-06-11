@@ -5,18 +5,16 @@ import {
   useEffect,
   createContext,
 } from "react";
-
 type Items = { item: { type: string; price: number } };
 type Pay = { type: string; price: number };
 type add = { service: string; price: number };
 type TimersContextProviderProps = {
   children: ReactNode;
 };
-
 const item: Items = { item: { type: "", price: 0 } };
 type Context = {
-  formConf: boolean;
   choosePlan: Items;
+  formConf: boolean;
   setPlan: (a: string, b: number) => void;
   setLenght: () => void;
   planLenght: string;
@@ -26,16 +24,12 @@ type Context = {
   setTotal: () => void;
   finalAmount: number;
 };
-
 const AuthContext = createContext<Context | null>(null);
-
-let addId:string[] = [];
-
+let addId: string[] = [];
 type ReducerActions = {
   type: "RECORD" | "UPDATE_MONTH" | "UPDATE_YEAR";
   payload?: Pay;
 };
-
 function actionReducer(state: Items, action: ReducerActions) {
   if (action.type === "RECORD") {
     state.item.type = action.payload!.type;
@@ -53,25 +47,21 @@ function actionReducer(state: Items, action: ReducerActions) {
     item: state.item,
   };
 }
-
 export const ContextProvider = ({ children }: TimersContextProviderProps) => {
   const lenghtLocal = localStorage.getItem("lenght");
   const [plan, planDispatch] = useReducer(actionReducer, item);
-
   const [total, SetTotal] = useState(0);
   const [isBtn, SetIsBtn] = useState(false);
   const [add, SetAdd] = useState<add[]>([]);
   const [leng, SetLeng] = useState(
     lenghtLocal === null ? "month" : lenghtLocal
   );
-
-  const updateAdd = (val:number) => {
+  const updateAdd = (val: number) => {
     const updated = add.map((add) => {
       return { ["service"]: add.service, ["price"]: add.price * val };
     });
     SetAdd(updated);
   };
-
   useEffect(() => {
     if (isBtn) {
       switch (leng) {
@@ -92,19 +82,16 @@ export const ContextProvider = ({ children }: TimersContextProviderProps) => {
     }
     SetIsBtn(false);
   }, [leng]);
-
   const setPlan = (type: string, price: number): void => {
     planDispatch({
       type: "RECORD",
       payload: { type, price },
     });
   };
-
   const setLenght = () => {
     SetLeng((prev) => (prev === "month" ? "year" : "month"));
     SetIsBtn(true);
   };
-
   const setChoseAdd = (
     service: string,
     id: string,
@@ -125,7 +112,6 @@ export const ContextProvider = ({ children }: TimersContextProviderProps) => {
       });
     }
   };
-
   const sumTotal = () => {
     const sum = add.reduce((total, thisPlan) => {
       return total + thisPlan.price;

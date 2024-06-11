@@ -1,26 +1,22 @@
 import "./MessageBox.css";
-import { Inf } from "../components/botton/FormControl";
+import { Inf } from "../components/footer/FormControl";
 type MProps = {
   msg: Inf;
   close: () => void;
   onClick: () => void;
   click: number | null;
 };
-
 export default function MessageBox({ msg, close, onClick, click }: MProps) {
   const txtMsg = "Alert!";
   const myClass = "warning";
   let btnTxt = "Ok";
   const message = msg.inf || "";
-
   if (msg.call === "Info") {
     btnTxt = "Yes";
   }
-
   const handleClick = () => {
     close();
   };
-
   function myFunction() {
     switch (click) {
       case 0:
@@ -41,7 +37,6 @@ export default function MessageBox({ msg, close, onClick, click }: MProps) {
         close();
     }
   }
-
   return (
     <div className={"content"}>
       <div className={"alert alert-warning alert-white rounded"}>
@@ -67,7 +62,7 @@ export default function MessageBox({ msg, close, onClick, click }: MProps) {
               <input
                 type="text"
                 className={"inp"}
-                value={msg.inf}
+                value={message}
                 id="myInput"
               />
               <button className={"btnMsg"} onClick={myFunction}>

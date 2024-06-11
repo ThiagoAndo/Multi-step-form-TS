@@ -6,7 +6,6 @@ type FcProps = {
   onClick: (direction: string) => void;
   click: number;
 };
-
 export type Inf = {
   msg: string;
   inf?: string;
@@ -20,7 +19,6 @@ const FormControl = ({ onClick, click }: FcProps) => {
   });
   const context = useContext(AuthContext);
   const modal = useRef<ModalHandle>(null);
-
   const handleClick = (call: string) => {
     switch (call) {
       case "N":
@@ -40,7 +38,6 @@ const FormControl = ({ onClick, click }: FcProps) => {
               msg: "In order to carry on with your purcahse you should pick a plan",
               call: "alert",
             });
-
             modal.current!.open();
           } else if (click === 1 && context!.choosePlan) {
             onClick("forward");
@@ -60,7 +57,6 @@ const FormControl = ({ onClick, click }: FcProps) => {
       case "C":
         onClick("forward");
         break;
-
       case "G":
         if (click >= 1) {
           onClick("backward");
@@ -73,7 +69,6 @@ const FormControl = ({ onClick, click }: FcProps) => {
   const handleModalAdd = () => {
     onClick("forward");
   };
-
   if (click === 3) {
     context!.setTotal();
   }
@@ -102,5 +97,4 @@ const FormControl = ({ onClick, click }: FcProps) => {
     </div>
   );
 };
-
 export default FormControl;

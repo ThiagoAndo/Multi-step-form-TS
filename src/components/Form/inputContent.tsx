@@ -1,4 +1,3 @@
- 
 const iptCont = [
   {
     label: "Name",
@@ -24,5 +23,4 @@ const iptCont = [
     placeholder: "e.g. +353-83-567-8901",
   },
 ];
-
 export default iptCont;

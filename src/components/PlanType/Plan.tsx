@@ -1,5 +1,4 @@
 import "./PlanType.css";
-
 type PlnaProps = {
   svg: string;
   click: number;
@@ -7,7 +6,6 @@ type PlnaProps = {
   onClick: (a: number, b: string) => void;
   info: { type: string; price: string; length: string };
 };
-
 const Plan = ({ svg, click, ThisClass, onClick, info }: PlnaProps) => {
   const handleClick = () => {
     onClick(click, info.type);
@@ -31,5 +29,4 @@ const Plan = ({ svg, click, ThisClass, onClick, info }: PlnaProps) => {
     </div>
   );
 };
-
 export default Plan;

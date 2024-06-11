@@ -4,7 +4,6 @@ type Plans = {
   price: number;
   length?: string;
 };
-
 export const content = [
   {
     MonthTxt: "$9/mo",
@@ -40,7 +39,6 @@ export const month: Plans[] = [
     price: 15,
   },
 ];
-
 export const year: Plans[] = [
   {
     txt: "$90/yr",

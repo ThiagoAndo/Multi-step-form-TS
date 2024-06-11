@@ -1,5 +1,4 @@
 import style from "./Atribution.module.css";
-
 const Attribution = () => {
   return (
     <div className={style.attribution}>
@@ -15,5 +14,4 @@ const Attribution = () => {
     </div>
   );
 };
-
 export default Attribution

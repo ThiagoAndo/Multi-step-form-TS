@@ -1,5 +1,4 @@
 import style from "./Instructions.module.css";
-
 const Instruction = ({
   select,
   option,
@@ -14,5 +13,4 @@ const Instruction = ({
     </div>
   );
 };
-
 export default Instruction;

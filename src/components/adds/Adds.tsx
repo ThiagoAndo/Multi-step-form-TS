@@ -1,10 +1,8 @@
 import { useContext } from "react";
-
 import "../PlanType/PlanType.css";
 import Instruction from "../holdTop/Instructions";
 import Add from "./Add";
 import AuthContext from "../../context/auth-context";
-
 export default function Adds() {
   const context = useContext(AuthContext);
   const picked = context!.addId;

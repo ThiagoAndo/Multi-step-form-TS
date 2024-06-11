@@ -1,7 +1,5 @@
 import style from "./Header.module.css";
 import { type PropsWithChildren } from "react";
-
-
 const Header = ({ children }: PropsWithChildren) => {
   return (
     <div id={style.header}>
@@ -9,5 +7,4 @@ const Header = ({ children }: PropsWithChildren) => {
     </div>
   );
 };
-
 export default Header;

@@ -1,13 +1,11 @@
 import style from "./StepNumTreck.module.css";
 import { type ReactNode } from "react";
-
 interface NumTreck{
   txt: string;
   txt2: string;
   thisClass: string;
   children: ReactNode;
 }
-
 const StepNumTreck = ({ txt, txt2 ,thisClass, children}:NumTreck) => {
   return (
     <div className={style.numContainer}>
@@ -19,5 +17,4 @@ const StepNumTreck = ({ txt, txt2 ,thisClass, children}:NumTreck) => {
     </div>
   );
 };
-
 export default StepNumTreck

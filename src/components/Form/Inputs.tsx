@@ -2,20 +2,24 @@ import {
   useState,
   useRef,
   useEffect,
+  useContext,
   type ComponentPropsWithoutRef,
 } from "react";
-import { Check, formCheck } from "./formValidation";
+import { formCheck } from "./formValidation";
+import AuthContext from "../../context/auth-context";
 import style from "./Form.module.css";
-import { Inf } from "../botton/FormControl";
+import { Inf } from "../footer/FormControl";
 import CartModal, { ModalHandle } from "../../UI/Modal";
-
 type InpProps = {
   label: string;
   id: string;
   onComplete: (a: string, b: string) => void;
 } & ComponentPropsWithoutRef<"input">;
-
+type Name = "name" | "email" | "phone";
+type FuncRet = Inf | boolean;
+type Picked = (a: string) => FuncRet;
 const Inputs = ({ label, id, onComplete, ...props }: InpProps) => {
+  const context = useContext(AuthContext);
   const [autoComplete, setAutoComplete] = useState(true);
   const [isEmpty, setIsEmpty] = useState(false);
   const [msg, setMsg] = useState<Inf>({
@@ -25,43 +29,55 @@ const Inputs = ({ label, id, onComplete, ...props }: InpProps) => {
   });
   const inputRef = useRef<HTMLInputElement>(null);
   const modal = useRef<ModalHandle>(null);
-
   const item = localStorage.getItem(id);
-
   const checkInputValue = (call: string) => {
     const inpID = inputRef.current!.id;
-    type Name ="name" |"email" | "phone"
     const val = inputRef.current!.value.trim();
-    let funcName :Name ="name";
-    switch (val) {
-      case "name":
-        funcName = "name";
-        break;
-        }
-        
-        const func = formCheck[funcName];
-
-    const ret = func(val);
-    if (ret === true) {
-      onComplete(funcName, val);
+    let func: Picked;
+    let ret: FuncRet;
+    let funcName: Name = "name";
+    if (inpID === "name") {
+      funcName = "name";
+      func = formCheck[funcName];
+      ret = func(val);
+      validation();
       return;
-    } else if (call != "autoFill") {
-      setMsg(ret as Inf);
-      setIsEmpty(true);
-      modal.current!.open();
+    } else if (inpID === "email") {
+      funcName = "email";
+      func = formCheck[funcName];
+      ret = func(val);
+      validation();
+      return;
+    } else if (inpID === "phone") {
+      funcName = "phone";
+      func = formCheck[funcName];
+      ret = func(val);
+      validation();
       return;
     }
 
-    setAutoComplete(false);
-    setTimeout(() => {
-      inputRef.current!.value = "";
-      inputRef.current!.blur();
-      setIsEmpty(true);
-    }, 500);
+    function validation() {
+      if (ret === true) {
+        onComplete(inpID, val);
+        return;
+      } else if (call != "autoFill") {
+        if (typeof ret === "object") {
+          setMsg(ret);
+          setIsEmpty(true);
+          modal.current!.open();
+          return;
+        }
+      }
+      setAutoComplete(false);
+      setTimeout(() => {
+        inputRef.current!.value = "";
+        inputRef.current!.blur();
+        setIsEmpty(true);
+      }, 500);
+    }
   };
-
   const handleInput = (call: string) => {
-    if (item) return;
+    context!.formConf = false;
     const val = inputRef.current!.value.trim();
     switch (call) {
       case "blur":
@@ -79,7 +95,6 @@ const Inputs = ({ label, id, onComplete, ...props }: InpProps) => {
         break;
     }
   };
-
   const handleBrowserAutoComplete = () => {
     if (autoComplete && !item) {
       checkInputValue("autoFill");
@@ -91,7 +106,6 @@ const Inputs = ({ label, id, onComplete, ...props }: InpProps) => {
     }
     onComplete(id, item ?? "");
   }, []);
-
   return (
     <>
       <CartModal
@@ -107,6 +121,7 @@ const Inputs = ({ label, id, onComplete, ...props }: InpProps) => {
         {label}
       </label>
       <input
+        id={id}
         ref={inputRef}
         onChange={handleBrowserAutoComplete}
         onBlur={() => {
@@ -123,5 +138,4 @@ const Inputs = ({ label, id, onComplete, ...props }: InpProps) => {
     </>
   );
 };
-
 export default Inputs;

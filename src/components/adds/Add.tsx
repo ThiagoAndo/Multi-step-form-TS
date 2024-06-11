@@ -1,8 +1,6 @@
 import { useState, useRef, useContext, useEffect } from "react";
-
 import AuthContext from "../../context/auth-context";
 import "../PlanType/PlanType.css";
-
 type AddProps = {
   service: string;
   advantage: string;
@@ -22,7 +20,6 @@ export default function Add({
   const context = useContext(AuthContext);
   const localAdd = localStorage.getItem(id);
   const addLength = context!.chooseAdd.length;
-
   useEffect(() => {
     if (addActive) {
       myRef.current!.checked = true;
@@ -31,7 +28,6 @@ export default function Add({
       handleClick();
     }
   }, []);
-
   const handleClick = () => {
     if (active === "active") {
       setActive("");
@@ -45,7 +41,6 @@ export default function Add({
       localStorage.setItem("id", id);
     }
   };
-
   return (
     <div className={`planType add ${active}`} onClick={handleClick}>
       <div className={"cheBox"}>

@@ -31,26 +31,22 @@ const Plantype = () => {
   const [clickUp, setClickup] = useState(choose);
   const myClass = "active planType";
   const len = length[0]["length"] as string;
-
   useEffect(() => {
     if (context!.planLenght === "month") {
       setLength(month);
     } else {
       setLength(year);
     }
-
     if (planLocal && planLocalPrice && context!.choosePlan.item.type === "") {
       context!.setPlan(planLocal, Number(planLocalPrice));
     }
-  }, [context.planLenght]);
-
+  }, [context!.planLenght]);
   const handleClick = (clickNum: number, type: string) => {
     setClickup(clickNum);
     context!.setPlan(type, length[clickNum].price);
     localStorage.setItem("plan", type);
     localStorage.setItem("planPrice", length[clickNum].price + "");
   };
-
   return (
     <section
       id={"planCont"}
@@ -102,5 +98,4 @@ const Plantype = () => {
     </section>
   );
 };
-
 export default Plantype;
