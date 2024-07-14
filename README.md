@@ -132,4 +132,4 @@ It is well known that working with dates and strings is not a simple task. It de
 
 - Github - [Thiago Ando de Freitas](https://github.com/ThiagoAndo)
 - Frontend Mentor - [@ThiagoAndo](https://www.frontendmentor.io/profile/ThiagoAndo)
-- Alive Website - [multi-step-form-main](https://thiagoando.github.io/multi-step-form-main/)
+- Alive Website - [multi-step-form-main](https://resilient-creponne-e85869.netlify.app)
