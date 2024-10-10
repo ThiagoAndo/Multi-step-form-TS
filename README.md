@@ -14,36 +14,33 @@ This project has three different variations. It was initialy build usising [JS M
 
 - ReactJS
 - Typescript
-- createContext
-- useReducer
+- useContext API
+- Redux toolkit
 - Flexbox
 - CSS Grid
-- Mobile-first workflow
+- Mobile first workflow
 
 ## Getting Started
 
 In order to run the project from a container we need `node>=14` and `npm>=7` installed on our development machines.
+
 ### Instructions
+
 - Fork this repository
 - Clone your forked repository
 - CD into the project folder
 - Run the commands `npm instal` to instal all dependencies required in the project and `npm run dev` to start the development server
-
-
 
 ## Table of contents
 
 - [Overview](#overview)
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
-  - [Code](#code)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
 **Note: Delete this note and update the table of contents based on what sections you keep.**
 
@@ -62,6 +59,7 @@ Users should be able to:
   - A field has been missed
   - The email address is not formatted correctly
   - A step is submitted, but no selection has been made
+
 ### Screenshot
 
 </br>
@@ -120,16 +118,22 @@ Users should be able to:
 ### What I learned
 
 <div style="text-align: justify">
-    I chose the Multi-step form challenge because it seemed to have a reasonable demand for coding. I love coding! By completing this great challenge, I got to learn how to test the functionalities of the web page to prevent bugs and make sure that everything works as it is supposed to. I have decided to change the original workflow to provide the user with a better experience. First of all, Once the user writes their data and presses the Next Step button, the page will store the user data and options in the local storage in the browser. Second of all, I let a plan already chosen as a basic plan (Arcade/mo). Finally, If the user does not choose an Add service, the page will ask them if they are sure of passing the advantage of acquiring a service.
-</div>
+I chose the Multi-step form challenge because it offered a reasonable coding demand, and I love coding! Completing this challenge allowed me to learn how to test webpage functionality, prevent bugs, and ensure everything works as intended. I decided to enhance the original workflow to provide users with a better experience.
 
+First, after users enter their information and click the "Next Step" button, the page will store their data and selections in the browser's local storage.
 
-### Continued development
+Second, I've set the default plan to the basic "Arcade/mo" option to streamline the process for users.
 
-It is well known that working with dates and strings is not a simple task. It demands the good expertise of the programmer. It is much simpler to perform form validation using the functionalities of HTML 5 (required). However, programming a form validation using a programming language gives more control over what is required from the user. By having to identify the characters typed by the user, I realize the necessity to increase my knowledge of understading regular expressions better. The next step is to get a better grasp of it.
+Finally, if users choose not to select any additional services, the page will prompt them to confirm their decision, ensuring they don't miss out on valuable options.
 
 ## Author
 
 - Github - [Thiago Ando de Freitas](https://github.com/ThiagoAndo)
 - Frontend Mentor - [@ThiagoAndo](https://www.frontendmentor.io/profile/ThiagoAndo)
 - Alive Website - [multi-step-form-main](https://resilient-creponne-e85869.netlify.app)
+- Personal website - [Portfolio](https://thiago-freitas-portfolio.vercel.app/)
+
+<div style="text-align: center" >
+<h3 style="color:black;">"The impediment to action advances action. What stands in the way becomes the way."</h3>
+<h3 style="color:black;">Marcus Aurelius </h3>
+</div>
