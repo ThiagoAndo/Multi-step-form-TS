@@ -130,7 +130,7 @@ Finally, if users choose not to select any additional services, the page will pr
 
 - Github - [Thiago Ando de Freitas](https://github.com/ThiagoAndo)
 - Frontend Mentor - [@ThiagoAndo](https://www.frontendmentor.io/profile/ThiagoAndo)
-- Alive Website - [multi-step-form-main](https://resilient-creponne-e85869.netlify.app)
+- Live Website - [multi-step-form-main](https://resilient-creponne-e85869.netlify.app)
 - Personal website - [Portfolio](https://thiago-freitas-portfolio.vercel.app/)
 
 <div style="text-align: center" >
